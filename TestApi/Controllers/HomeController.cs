@@ -22,31 +22,31 @@ namespace TestApi.Controllers
 
         public async Task<IActionResult> IndexAsync()
         {
-            List<DataAPI> reservationList = new List<DataAPI>();
+            List<DataAPI> testList = new List<DataAPI>();
             using (var httpClient = new HttpClient())
             {
                 using (var response = await httpClient.GetAsync("https://jsonplaceholder.typicode.com/posts"))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
-                    reservationList = JsonConvert.DeserializeObject<List<DataAPI>>(apiResponse);
+                    testList = JsonConvert.DeserializeObject<List<DataAPI>>(apiResponse);
                 }
             }
-            return View(reservationList);
+            return View(testList);
         }
         public async Task<IActionResult> Details(int? id)
         {
 
-            List<DataAPIValue> reservationList2 = new List<DataAPIValue>();
+            List<DataAPIValue> test2 = new List<DataAPIValue>();
             using (var httpClient = new HttpClient())
             {
                 using (var response = await httpClient.GetAsync("https://jsonplaceholder.typicode.com/todos/" + id))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
-                    reservationList2 = JsonConvert.DeserializeObject<List<DataAPIValue>>("[" + apiResponse + "]");
+                    test2 = JsonConvert.DeserializeObject<List<DataAPIValue>>("[" + apiResponse + "]");
                  
                 }
             }
-            return View(reservationList2);
+            return View(test2);
 
 
         }
